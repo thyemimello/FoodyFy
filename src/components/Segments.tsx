@@ -37,7 +37,7 @@ export default function Segments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative w-[84%] shrink-0 snap-center sm:w-auto sm:shrink overflow-hidden rounded-[24px] border border-white/[0.07] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/35 sm:p-7"
+              className="group relative w-[280px] shrink-0 snap-center overflow-hidden sm:w-auto sm:shrink-0 rounded-[24px] border border-white/[0.07] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/35 sm:p-7"
               style={{ background: seg.bg, backgroundSize: "cover" }}
             >
               <span className="absolute inset-0 bg-night-900/70 transition-colors duration-500 group-hover:bg-night-900/55" />

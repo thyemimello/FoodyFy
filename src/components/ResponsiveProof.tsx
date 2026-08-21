@@ -13,11 +13,11 @@ const BENEFICIOS = [
  * O vídeo é o fundo da seção inteira.
  *
  * Medições que sustentam essa escolha:
- *   - o terço esquerdo do quadro (x < 0,34) é preto em todo o vídeo, então ele
- *     mesmo já reserva o vazio onde entra o texto;
- *   - os cantos vão de 16 a 99 de luminância, ou seja, o fundo é iluminado:
- *     blend screen levantaria um retângulo, então aqui é composição normal;
- *   - o assunto vive em x 0,57–0,93; com 73% de object-position a janela
+ *   - quase metade esquerda do quadro (x < 0,48) é preta, então o próprio
+ *     vídeo já reserva o vazio onde entra o texto;
+ *   - os cantos ficam entre 16 e 40 de luminância: escuros, mas não pretos
+ *     puros, então composição normal (blend screen levantaria retângulo);
+ *   - o assunto vive em x 0,48–0,93; com 73% de object-position a janela
  *     visível fica em 0,165–0,939, então ele aparece inteiro.
  *
  * Como painel recortado, as bordas do quadro apareciam como faixas. Ocupando a
@@ -65,7 +65,7 @@ function Palco() {
       {desktop && (
         <motion.video
           style={{ y: deriva, objectPosition: "73% 50%" }}
-          src="/videos/cardapio-cinematografico.mp4"
+          src="/videos/cardapio-cinematografico-v2.mp4"
           autoPlay
           loop
           muted
