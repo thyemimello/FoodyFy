@@ -243,6 +243,14 @@
     .implementation-runner { animation: none; left: 50%; }
   }
 
+  /* rolagem interna do mock do celular, sem barra à vista */
+  .scrollbar-oculta {
+    scrollbar-width: none;
+  }
+  .scrollbar-oculta::-webkit-scrollbar {
+    display: none;
+  }
+
   .card-light {
     @apply border border-brand-sand bg-white transition-all duration-500;
   }

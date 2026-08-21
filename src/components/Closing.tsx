@@ -224,7 +224,7 @@ export function Cta() {
             <Phone className="h-3.5 w-3.5" />
             Respondemos em até 1 hora útil. Quem fala com você é gente.
           </p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block text-[13px] text-brand-cream/40 transition-colors hover:text-brand-orange">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="-my-1 inline-block py-2 mt-3 inline-block text-[13px] text-brand-cream/40 transition-colors hover:text-brand-orange">
             Prefere e-mail? {CONTACT_EMAIL}
           </a>
         </div>
@@ -273,18 +273,18 @@ export function Footer() {
   return (
     <footer className="border-t border-white/[0.07] bg-night-900 pb-10 pt-16">
       <div className="mx-auto max-w-[1240px] px-6">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo />
             <p className="mt-5 max-w-[300px] text-[14.5px] leading-relaxed text-brand-cream/50">
               Sistema de gestão para quem trabalha com comida. Do pedido no
               cardápio até a nota fiscal, sem trocar de programa.
             </p>
             <div className="mt-5 flex flex-col items-start gap-2 text-[13.5px] text-brand-cream/50">
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="transition-colors hover:text-brand-orange">
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="-my-1 inline-block py-2 transition-colors hover:text-brand-orange">
                 WhatsApp: +55 47 8814-0013
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-brand-orange">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="-my-1 inline-block py-2 transition-colors hover:text-brand-orange">
                 {CONTACT_EMAIL}
               </a>
             </div>
@@ -295,12 +295,12 @@ export function Footer() {
               <h4 className="text-[14px] font-semibold uppercase tracking-wider text-brand-cream/85">
                 {col.title}
               </h4>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-4 space-y-0.5 sm:mt-5">
                 {col.links.map(([label, href]) => (
                   <li key={label}>
                     <a
                       href={href}
-                      className="text-[14.5px] text-brand-cream/50 transition-colors hover:text-brand-orange"
+                      className="-my-1 inline-block py-2 text-[14.5px] text-brand-cream/50 transition-colors hover:text-brand-orange"
                     >
                       {label}
                     </a>
@@ -316,10 +316,10 @@ export function Footer() {
             © {new Date().getFullYear()} FoodFy.club. Todos os direitos reservados.
           </p>
           <div className="flex gap-6 text-[13.5px] text-brand-cream/40">
-            <a href="#" className="transition-colors hover:text-brand-cream/70">
+            <a href="#" className="-my-1 inline-block py-2 transition-colors hover:text-brand-cream/70">
               Termos de uso
             </a>
-            <a href="#" className="transition-colors hover:text-brand-cream/70">
+            <a href="#" className="-my-1 inline-block py-2 transition-colors hover:text-brand-cream/70">
               Privacidade
             </a>
           </div>

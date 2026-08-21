@@ -77,7 +77,7 @@ export default function Modules() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {MODULES.map((m, i) => (
             <motion.article
               key={m.title}
@@ -85,17 +85,19 @@ export default function Modules() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.03] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/30 hover:bg-white/[0.055]"
+              className="group relative overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.03] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/30 hover:bg-white/[0.055] sm:p-7"
             >
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-orange/0 blur-[50px] transition-all duration-700 group-hover:bg-brand-orange/25" />
               <div className="relative">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl border border-brand-orange/25 bg-gradient-to-br from-brand-orange/20 to-brand-red/10">
-                  <m.icon className="h-[22px] w-[22px] text-brand-orange" strokeWidth={1.6} />
-                </span>
-                <h3 className="mt-5 text-[19px] font-semibold text-brand-cream">
-                  {m.title}
-                </h3>
-                <p className="mt-2.5 text-[14.5px] leading-relaxed text-brand-cream/55">
+                <div className="flex items-center gap-3 sm:block">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-brand-orange/25 bg-gradient-to-br from-brand-orange/20 to-brand-red/10 sm:h-12 sm:w-12">
+                    <m.icon className="h-5 w-5 text-brand-orange sm:h-[22px] sm:w-[22px]" strokeWidth={1.6} />
+                  </span>
+                  <h3 className="text-[17px] font-semibold text-brand-cream sm:mt-5 sm:text-[19px]">
+                    {m.title}
+                  </h3>
+                </div>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-brand-cream/55 sm:mt-2.5 sm:text-[14.5px]">
                   {m.text}
                 </p>
               </div>

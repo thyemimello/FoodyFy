@@ -62,15 +62,37 @@ export default function Showcase() {
             <p className="mt-5 max-w-[320px] text-[13.5px] leading-[1.65] text-white/55">Atendimento, pedidos, estoque e financeiro trabalhando juntos para você ganhar agilidade, reduzir erros e aumentar seus resultados.</p>
           </header>
 
+          {/* No celular o rolo inteiro é ilegível a 375px, então ele some — mas a
+              seção não pode ficar sem nenhuma tela do produto. Entra um print
+              único, em moldura, logo abaixo do título. */}
+          <div className="max-lg:order-2 lg:hidden">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-night-800 shadow-[0_30px_60px_-30px_rgba(0,0,0,1)]">
+              <div className="flex items-center gap-1.5 border-b border-white/[0.07] bg-white/[0.03] px-3 py-2.5">
+                <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
+                <span className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
+                <span className="h-2 w-2 rounded-full bg-[#28C840]" />
+                <span className="ml-2 truncate rounded bg-black/30 px-2 py-0.5 text-[10px] text-white/40">
+                  app.foodfy.club/pdv
+                </span>
+              </div>
+              <img
+                src="/prints/pdv.png"
+                alt="Tela do PDV do FoodFy"
+                loading="lazy"
+                className="block w-full"
+              />
+            </div>
+          </div>
+
           <ol className="relative mt-12 max-w-[310px] max-lg:order-3">
             <span aria-hidden="true" className="absolute bottom-8 left-[6px] top-8 w-px bg-white/15" />
             {ETAPAS.map((etapa, index) => {
               const Icon = etapa.icon;
               const destaque = index === ativo;
               return (
-                <li key={etapa.titulo} ref={(elemento) => { itensRef.current[index] = elemento; }} className="relative flex min-h-[132px] gap-5">
+                <li key={etapa.titulo} ref={(elemento) => { itensRef.current[index] = elemento; }} className="relative flex gap-4 max-lg:min-h-0 sm:gap-5 lg:min-h-[132px]">
                   <span aria-hidden="true" className={`relative z-10 mt-[38px] h-[13px] w-[13px] shrink-0 rounded-full border-2 transition-all duration-300 ${destaque ? "border-brand-orange bg-brand-orange shadow-[0_0_14px_rgba(255,138,0,.85)]" : "border-white/25 bg-night-900"}`} />
-                  <button type="button" aria-current={destaque ? "step" : undefined} aria-label={`Ver ${etapa.titulo}`} onClick={() => selecionarEtapa(index)} className={`group mb-4 flex flex-1 gap-4 rounded-2xl border p-4 text-left outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-brand-orange ${destaque ? "border-brand-orange/45 bg-white/[.045] shadow-[0_12px_34px_-22px_rgba(255,138,0,.7)]" : "border-transparent hover:border-white/15 hover:bg-white/[.025]"}`}>
+                  <button type="button" aria-current={destaque ? "step" : undefined} aria-label={`Ver ${etapa.titulo}`} onClick={() => selecionarEtapa(index)} className={`group mb-3 flex flex-1 gap-3.5 rounded-2xl border p-3.5 text-left lg:mb-4 lg:gap-4 lg:p-4 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-brand-orange ${destaque ? "border-brand-orange/45 bg-white/[.045] shadow-[0_12px_34px_-22px_rgba(255,138,0,.7)]" : "border-transparent hover:border-white/15 hover:bg-white/[.025]"}`}>
                     <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors ${destaque ? "border-brand-orange/40 text-brand-orange" : "border-white/15 text-white/80 group-hover:border-white/30"}`}><Icon className="h-[19px] w-[19px]" strokeWidth={1.6} /></span>
                     <span className="min-w-0">
                       <span className={`text-[10px] font-semibold tracking-wider ${destaque ? "text-brand-orange" : "text-white/40"}`}>{String(index + 1).padStart(2, "0")}</span>
@@ -89,7 +111,7 @@ export default function Showcase() {
           </div>
         </aside>
 
-        <motion.figure style={{ y: deslocamento, rotate: inclinacao }} className="showcase-composition relative mx-auto w-full max-w-[720px] max-lg:order-2 lg:-mt-8 lg:ml-[-3rem] lg:mr-[-10rem] lg:w-[135%] lg:max-w-none lg:justify-self-stretch">
+        <motion.figure style={{ y: deslocamento, rotate: inclinacao }} className="showcase-composition relative mx-auto hidden w-full max-w-[720px] lg:block max-lg:order-2 lg:-mt-8 lg:ml-[-3rem] lg:mr-[-10rem] lg:w-[135%] lg:max-w-none lg:justify-self-stretch">
           <motion.img
             src="/showcase-foodfy-premium.png"
             alt="Notebook com uma faixa curva formada pelas telas reais do sistema"

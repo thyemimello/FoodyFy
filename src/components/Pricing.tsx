@@ -90,7 +90,9 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        {/* No celular os planos viram carrossel: o card seguinte fica espiando na
+            borda, o que sinaliza o arraste sem precisar de instrução. */}
+        <div className="mt-10 scrollbar-oculta -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0 sm:mt-14 sm:gap-6 lg:grid-cols-3">
           {PLANS.map((p, i) => (
             <motion.div
               key={p.id}
@@ -98,7 +100,7 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative flex flex-col overflow-hidden rounded-[26px] border p-8 ${
+              className={`relative flex w-[84%] shrink-0 snap-center sm:w-auto sm:shrink flex-col overflow-hidden rounded-[26px] border p-6 sm:p-8 ${
                 p.highlight
                   ? "border-brand-orange/70 bg-gradient-to-b from-night-500 to-night-700 shadow-[0_32px_80px_-34px_rgba(255,138,0,.5)] lg:-mt-4 lg:pb-11 lg:pt-11"
                   : "border-white/[0.09] bg-white/[0.035]"
@@ -111,13 +113,13 @@ export default function Pricing() {
               )}
 
               <h3 className="text-[21px] font-semibold text-brand-cream">{p.name}</h3>
-              <p className="mt-2 min-h-[44px] text-[14.5px] leading-relaxed text-brand-cream/50">
+              <p className="mt-2 text-[14.5px] leading-relaxed text-brand-cream/50 sm:min-h-[44px]">
                 {p.pitch}
               </p>
 
               <div className="mt-6 flex items-end gap-1.5">
                 <span className="text-[15px] text-brand-cream/50">R$</span>
-                <span className="text-[46px] font-bold leading-none tracking-tight text-brand-cream">
+                <span className="text-[40px] font-bold leading-none tracking-tight text-brand-cream sm:text-[46px]">
                   {yearly ? p.yearly : p.monthly}
                 </span>
                 <span className="mb-1.5 text-[14px] text-brand-cream/50">/mês</span>
@@ -128,7 +130,7 @@ export default function Pricing() {
 
               <a
                 href="#contato"
-                className={`mt-7 flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition-all duration-300 ${
+                className={`mt-5 flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition-all duration-300 sm:mt-7 ${
                   p.highlight
                     ? "bg-gradient-to-r from-brand-orange to-[#F5741B] text-white shadow-[0_10px_40px_-12px_rgba(255,138,0,.9)] hover:-translate-y-0.5"
                     : "border border-white/15 bg-white/[0.04] text-brand-cream hover:border-brand-orange hover:bg-white/[0.08]"
@@ -138,7 +140,7 @@ export default function Pricing() {
                 <ArrowRight className="h-[17px] w-[17px]" />
               </a>
 
-              <ul className="mt-8 space-y-3.5 border-t border-white/10 pt-7">
+              <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-5 sm:mt-8 sm:space-y-3.5 sm:pt-7">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-orange">
