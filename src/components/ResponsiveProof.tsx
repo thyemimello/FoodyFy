@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Check, Link2, SlidersHorizontal } from "lucide-react";
 
@@ -26,59 +26,53 @@ const BENEFICIOS = [
  * A versão navegável desta tela continua em CardapioMock.tsx.
  */
 /**
- * O vídeo só é montado a partir de 1024px.
+ * Palco do vídeo.
  *
- * No celular ele entrava a 22% de opacidade, ou seja: 9,3 MB de download em
- * 4G para produzir um brilho quente de fundo. O mesmo efeito sai de um
- * gradiente, que custa zero byte. Esconder por CSS não resolveria — o
- * navegador baixa o arquivo do mesmo jeito —, por isso a decisão é de
- * montagem, não de estilo.
+ * Enquadramento medido, não chutado: o aparelho vive em x 0,48–0,93 do quadro
+ * e a metade esquerda é preta, o que já reserva o vazio onde entra o texto.
+ * Com object-position em 73% a janela visível fica em 0,062–0,977, então ele
+ * aparece inteiro. Os cantos ficam entre 16 e 40 de luminância — escuros, mas
+ * não pretos puros, por isso composição normal (blend screen levantaria um
+ * retângulo).
+ *
+ * No celular o vídeo continua rodando, mas rebaixado a 20% de opacidade sobre
+ * um véu escuro: vira ambiente, e quem manda na leitura é o texto.
+ *
+ * A versão navegável desta tela continua em CardapioMock.tsx.
  */
-function useDesktop() {
-  const [desktop, setDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const aplicar = () => setDesktop(mq.matches);
-    aplicar();
-    mq.addEventListener("change", aplicar);
-    return () => mq.removeEventListener("change", aplicar);
-  }, []);
-  return desktop;
-}
-
 function Palco() {
   const ref = useRef<HTMLDivElement>(null);
-  const desktop = useDesktop();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  /* a folga de 10% na altura é o que permite o parallax sem abrir buraco */
+  /* a folga de 12% na altura é o que permite o parallax sem abrir buraco */
   const deriva = useTransform(scrollYProgress, [0, 1], ["2.5%", "-2.5%"]);
 
   return (
     <div ref={ref} aria-hidden="true" className="absolute inset-0 overflow-hidden">
-      {/* luz do produto — no celular é ela que faz todo o trabalho */}
+      {/* luz do produto, derramando para o lado do texto */}
       <div className="absolute inset-y-0 -left-1/4 right-0 bg-[radial-gradient(ellipse_at_62%_50%,rgba(255,120,20,.22),transparent_68%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[radial-gradient(ellipse_at_72%_100%,rgba(255,138,0,.16),transparent_62%)] lg:hidden" />
 
-      {desktop && (
-        <motion.video
-          style={{ y: deriva, objectPosition: "73% 50%" }}
-          src="/videos/cardapio-cinematografico-v2.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="absolute -top-[6%] left-0 h-[112%] w-full object-cover"
-        />
-      )}
+      {/* escuro por trás do vídeo, para ele não clarear o fundo da seção */}
+      <div className="absolute inset-0 bg-[#15100D] lg:bg-transparent" />
 
-      {/* véu do texto: no celular cobre tudo; no desktop libera a cena à direita */}
-      <div className="absolute inset-0 bg-night-900/40 lg:bg-[linear-gradient(to_right,#0A0806_0%,rgba(10,8,6,.96)_28%,rgba(10,8,6,.7)_44%,rgba(10,8,6,.2)_60%,transparent_74%)]" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-night-900 via-night-900/60 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-night-900 via-night-900/60 to-transparent" />
+      <motion.video
+        style={{ y: deriva, objectPosition: "73% 50%" }}
+        src="/videos/cardapio-cinematografico-v2.mp4"
+        poster="/cardapio-mobile-fundo.jpg"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        className="absolute -top-[6%] left-0 h-[112%] w-full object-cover opacity-20 lg:opacity-100"
+      />
+
+      {/* véu: no celular cobre tudo; no desktop libera a cena à direita */}
+      <div className="absolute inset-0 bg-[#15100D]/55 lg:bg-[linear-gradient(to_right,#0A0806_0%,rgba(10,8,6,.96)_28%,rgba(10,8,6,.7)_44%,rgba(10,8,6,.2)_60%,transparent_74%)]" />
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#15100D] via-[#15100D]/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#15100D] via-[#15100D]/60 to-transparent" />
     </div>
   );
 }
@@ -88,14 +82,14 @@ export default function ResponsiveProof() {
     <section
       id="cardapio-autonomo"
       aria-label="Autonomia total para gerenciar o cardápio digital"
-      className="relative w-full overflow-hidden border-y border-white/[0.06] bg-night-900 py-16 lg:py-20"
+      className="relative w-full overflow-hidden bg-[#15100D] py-24 lg:py-32"
     >
       <Palco />
 
       <div className="relative z-10 mx-auto max-w-[1320px] px-6 lg:px-10">
         <div className="lg:max-w-[54%]">
           <motion.span
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -111,11 +105,11 @@ export default function ResponsiveProof() {
           </motion.span>
 
           <motion.h2
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-7 text-[36px] font-bold leading-[1.06] tracking-[-.035em] text-white sm:text-[44px] xl:text-[50px]"
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-7 text-[36px] font-bold leading-[1.06] tracking-[-.035em] text-brand-cream sm:text-[44px] xl:text-[50px]"
           >
             Seu cardápio.
             <br />
@@ -125,11 +119,11 @@ export default function ResponsiveProof() {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.14 }}
-            className="mt-6 max-w-[500px] text-[15px] leading-[1.7] text-white/60"
+            className="mt-6 max-w-[500px] text-[15px] leading-[1.7] text-brand-cream/60"
           >
             Você mesmo cria e gerencia o cardápio digital dentro do FoodFy.
             Atualize produtos, preços e promoções na hora, com liberdade para
@@ -140,16 +134,16 @@ export default function ResponsiveProof() {
             {BENEFICIOS.map((b, i) => (
               <motion.div
                 key={b}
-                initial={{ opacity: 0, y: 18 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: 0.06 * i }}
-                className="group flex items-start gap-3 rounded-2xl border border-white/[0.09] bg-night-900/70 p-4 backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-brand-orange/45 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_-24px_rgba(255,138,0,.8)]"
+                transition={{ duration: 0.5 }}
+                className="group flex items-start gap-3 rounded-2xl border border-brand-sand/[0.13] bg-[#15100D]/70 p-4 transition-all duration-500 hover:-translate-y-0.5 hover:border-brand-orange/45 hover:bg-[#8B5E3C]/[0.16] hover:shadow-[0_16px_40px_-24px_rgba(255,138,0,.8)]"
               >
                 <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-orange transition-transform duration-500 group-hover:scale-110">
-                  <Check className="h-4 w-4 text-night-900" strokeWidth={3.2} />
+                  <Check className="h-4 w-4 text-[#15100D]" strokeWidth={3.2} />
                 </span>
-                <span className="text-[13.5px] leading-[1.45] text-white/80 transition-colors duration-500 group-hover:text-white">
+                <span className="text-[13.5px] leading-[1.45] text-brand-cream/80 transition-colors duration-500 group-hover:text-brand-cream">
                   {b}
                 </span>
               </motion.div>
@@ -157,7 +151,7 @@ export default function ResponsiveProof() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -170,10 +164,10 @@ export default function ResponsiveProof() {
               />
             </span>
             <div>
-              <p className="text-[17px] font-bold text-white">
+              <p className="text-[17px] font-bold text-brand-cream">
                 Você altera aqui. Seu cliente vê lá.
               </p>
-              <p className="mt-1 text-[13.5px] leading-relaxed text-white/50">
+              <p className="mt-1 text-[13.5px] leading-relaxed text-brand-cream/50">
                 As alterações aparecem no cardápio responsivo acessado por link
                 ou QR Code.
               </p>

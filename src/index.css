@@ -10,7 +10,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-night-900 text-brand-cream font-sans antialiased;
+    @apply bg-[#15100D] text-brand-cream font-sans antialiased;
     overflow-x: hidden;
   }
   ::selection {
@@ -43,13 +43,19 @@
     @apply border border-white/10 bg-white/[0.035] backdrop-blur-xl;
   }
   .section-eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange;
+    @apply inline-flex items-center gap-2.5 rounded-full border border-brand-sand/[0.14] bg-[#8B5E3C]/[0.16] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-sand;
   }
 
   /* Seções claras usam a paleta de superfície da marca (creme, bege, marrom).
      Sobre creme o laranja #FF8A00 não alcança contraste suficiente em texto
      pequeno, então o selo vira pílula sólida e o destaque de título usa o
      vermelho #E53935, que passa em texto grande. */
+  /* o laranja fica só no ponto: ação é 10% do guia, não o selo inteiro */
+  .section-eyebrow::before {
+    content: "";
+    @apply h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange;
+  }
+
   .section-eyebrow-light {
     @apply inline-flex items-center gap-2 rounded-full bg-brand-cream3 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink;
   }

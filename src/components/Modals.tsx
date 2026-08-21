@@ -53,7 +53,7 @@ function Shell({
               type="button"
               onClick={onClose}
               aria-label="Fechar"
-              className="absolute -top-12 right-0 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-brand-cream/80 backdrop-blur-md transition-colors hover:text-brand-cream"
+              className="absolute -top-12 right-0 grid h-10 w-10 place-items-center rounded-full border border-brand-sand/[0.18] bg-[#8B5E3C]/[0.16] text-brand-cream/80 backdrop-blur-md transition-colors hover:text-brand-cream"
             >
               <X className="h-5 w-5" />
             </button>
@@ -76,7 +76,7 @@ export function LoginModal({
 
   return (
     <Shell open={open} onClose={onClose}>
-      <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-night-800/95 p-9 shadow-card backdrop-blur-2xl">
+      <div className="relative overflow-hidden rounded-[28px] border border-brand-sand/[0.14] bg-[#15100D]/95 p-9 shadow-card backdrop-blur-2xl">
         <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-brand-orange/25 blur-[70px]" />
 
         <div className="relative">
@@ -99,7 +99,7 @@ export function LoginModal({
               <span className="mb-2 block text-[13px] font-medium text-brand-cream/70">
                 E-mail
               </span>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/12 bg-black/30 px-4 transition-colors focus-within:border-brand-orange/70">
+              <div className="flex items-center gap-3 rounded-2xl border border-brand-sand/[0.16] bg-black/30 px-4 transition-colors focus-within:border-brand-orange/70">
                 <Mail className="h-[18px] w-[18px] text-brand-cream/40" />
                 <input
                   type="email"
@@ -114,7 +114,7 @@ export function LoginModal({
               <span className="mb-2 block text-[13px] font-medium text-brand-cream/70">
                 Senha
               </span>
-              <div className="flex items-center gap-3 rounded-2xl border border-white/12 bg-black/30 px-4 transition-colors focus-within:border-brand-orange/70">
+              <div className="flex items-center gap-3 rounded-2xl border border-brand-sand/[0.16] bg-black/30 px-4 transition-colors focus-within:border-brand-orange/70">
                 <Lock className="h-[18px] w-[18px] text-brand-cream/40" />
                 <input
                   type={show ? "text" : "password"}
@@ -172,7 +172,7 @@ export function VideoModal({
 }) {
   return (
     <Shell open={open} onClose={onClose} maxWidth="max-w-[1000px]">
-      <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black shadow-card">
+      <div className="overflow-hidden rounded-[24px] border border-brand-sand/[0.14] bg-black shadow-card">
         {open && (
           <video
             className="h-auto w-full"

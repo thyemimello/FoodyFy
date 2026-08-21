@@ -54,8 +54,8 @@ export default function Pricing() {
   const [yearly, setYearly] = useState(true);
 
   return (
-    <section id="precos" className="relative overflow-hidden border-t border-white/[0.06] bg-night-800 py-28">
-      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-brand-orange/[0.08] blur-[140px]" />
+    <section id="precos" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
 
       <div className="relative mx-auto max-w-[1180px] px-6">
         <div className="mx-auto max-w-[680px] text-center">
@@ -69,7 +69,7 @@ export default function Pricing() {
             fidelidade nem taxa de instalação.
           </p>
 
-          <div className="mt-9 inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/25 p-1.5">
+          <div className="mt-9 inline-flex items-center gap-1 rounded-full border border-brand-sand/[0.14] bg-black/25 p-1.5">
             {[
               { id: "m", label: "Mensal", on: !yearly },
               { id: "y", label: "Anual · 20% off", on: yearly },
@@ -80,7 +80,7 @@ export default function Pricing() {
                 onClick={() => setYearly(o.id === "y")}
                 className={`rounded-full px-5 py-2.5 text-[14px] font-medium transition-all duration-300 ${
                   o.on
-                    ? "bg-gradient-to-r from-brand-orange to-[#FFA02E] text-white shadow-[0_6px_18px_-8px_rgba(255,138,0,.9)]"
+                    ? "bg-gradient-to-r from-brand-orange to-[#FFA02E] text-brand-cream shadow-[0_6px_18px_-8px_rgba(255,138,0,.9)]"
                     : "text-brand-cream/50 hover:text-brand-cream"
                 }`}
               >
@@ -96,18 +96,18 @@ export default function Pricing() {
           {PLANS.map((p, i) => (
             <motion.div
               key={p.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className={`relative flex w-[84%] shrink-0 snap-center sm:w-auto sm:shrink flex-col overflow-hidden rounded-[26px] border p-6 sm:p-8 ${
                 p.highlight
-                  ? "border-brand-orange/70 bg-gradient-to-b from-night-500 to-night-700 shadow-[0_32px_80px_-34px_rgba(255,138,0,.5)] lg:-mt-4 lg:pb-11 lg:pt-11"
-                  : "border-white/[0.09] bg-white/[0.035]"
+                  ? "border-brand-orange/70 bg-gradient-to-b from-[#372B23] to-[#221A15] shadow-[0_32px_80px_-34px_rgba(255,138,0,.5)] lg:-mt-4 lg:pb-11 lg:pt-11"
+                  : "border-brand-sand/[0.13] bg-[#8B5E3C]/[0.09]"
               }`}
             >
               {p.highlight && (
-                <span className="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-brand-orange px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                <span className="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-brand-orange px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-cream">
                   <Sparkles className="h-3 w-3" /> Mais usado
                 </span>
               )}
@@ -132,19 +132,19 @@ export default function Pricing() {
                 href="#contato"
                 className={`mt-5 flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition-all duration-300 sm:mt-7 ${
                   p.highlight
-                    ? "bg-gradient-to-r from-brand-orange to-[#F5741B] text-white shadow-[0_10px_40px_-12px_rgba(255,138,0,.9)] hover:-translate-y-0.5"
-                    : "border border-white/15 bg-white/[0.04] text-brand-cream hover:border-brand-orange hover:bg-white/[0.08]"
+                    ? "bg-gradient-to-r from-brand-orange to-[#F5741B] text-brand-cream shadow-[0_10px_40px_-12px_rgba(255,138,0,.9)] hover:-translate-y-0.5"
+                    : "border border-brand-sand/[0.18] bg-[#8B5E3C]/[0.10] text-brand-cream hover:border-brand-orange hover:bg-[#8B5E3C]/[0.20]"
                 }`}
               >
                 Começar teste grátis
                 <ArrowRight className="h-[17px] w-[17px]" />
               </a>
 
-              <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-5 sm:mt-8 sm:space-y-3.5 sm:pt-7">
+              <ul className="mt-6 space-y-2.5 border-t border-brand-sand/[0.14] pt-5 sm:mt-8 sm:space-y-3.5 sm:pt-7">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-orange">
-                      <Check className="h-3 w-3 text-white" strokeWidth={3.2} />
+                      <Check className="h-3 w-3 text-brand-cream" strokeWidth={3.2} />
                     </span>
                     <span className="text-[14.5px] leading-snug text-brand-cream/75">
                       {f}

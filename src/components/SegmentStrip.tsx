@@ -40,7 +40,7 @@ export default function SegmentStrip({
                 style={{
                   background: isActive
                     ? "conic-gradient(from 210deg, #FF8A00, #FFC83D, #E53935, #FF8A00)"
-                    : "linear-gradient(160deg, rgba(255,255,255,.2), rgba(255,255,255,.04))",
+                    : "linear-gradient(160deg, rgba(234,223,215,.2), rgba(234,223,215,.04))",
                 }}
               />
               <span

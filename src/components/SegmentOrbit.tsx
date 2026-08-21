@@ -142,7 +142,7 @@ export default function SegmentOrbit({ active, onSelect, scale = 1 }: Props) {
                     inset: ativo ? -4 : -1,
                     background: ativo
                       ? "conic-gradient(from 210deg, #FF8A00, #FFC83D, #F0611A, #FF8A00)"
-                      : "linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.03))",
+                      : "linear-gradient(160deg, rgba(234,223,215,.14), rgba(234,223,215,.03))",
                     boxShadow: ativo
                       ? "0 0 24px rgba(255,138,0,.6)"
                       : "0 10px 28px rgba(0,0,0,.5)",

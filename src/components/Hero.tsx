@@ -69,7 +69,7 @@ export default function Hero() {
     <section
       id="top"
       ref={heroRef}
-      className="relative w-full overflow-hidden bg-night-900 xl:h-screen xl:min-h-[760px]"
+      className="relative w-full overflow-hidden bg-[#15100D] xl:h-screen xl:min-h-[760px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -119,13 +119,13 @@ export default function Hero() {
       {/* scrim do carrossel (direita) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_left,rgba(7,5,4,.72)_0%,rgba(7,5,4,.3)_26%,transparent_46%)]" />
       {/* barra do header */}
-      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-night-900/95 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night-900 via-night-900/55 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#15100D]/95 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#15100D] via-[#15100D]/55 to-transparent" />
       <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" />
 
       {/* luz ambiente que acompanha o segmento */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]"
         animate={{ backgroundColor: seg.light, opacity: 0.1 }}
         transition={{ duration: 1.2 }}
       />
@@ -135,7 +135,7 @@ export default function Hero() {
         {/* ----- copy ----- */}
         <motion.div
           className="max-w-[560px] text-center xl:text-left"
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           style={{
@@ -255,7 +255,7 @@ export default function Hero() {
               </svg>
 
               {/* disco da marca */}
-              <div className="relative grid h-[440px] w-[440px] place-items-center overflow-hidden rounded-full border border-white/[0.09] bg-[radial-gradient(circle_at_50%_38%,#1A1411_0%,#0A0706_72%)] shadow-[0_0_90px_-40px_rgba(255,138,0,.3),inset_0_0_80px_rgba(0,0,0,.95)]">
+              <div className="relative grid h-[440px] w-[440px] place-items-center overflow-hidden rounded-full border border-brand-sand/[0.13] bg-[radial-gradient(circle_at_50%_38%,#1A1411_0%,#0A0706_72%)] shadow-[0_0_90px_-40px_rgba(255,138,0,.3),inset_0_0_80px_rgba(0,0,0,.95)]">
                 {/* marca em vetor: aparece enquanto o vídeo carrega */}
                 <div
                   className="absolute inset-0 transition-opacity duration-700"
@@ -278,7 +278,7 @@ export default function Hero() {
 
             {/* nome do segmento */}
             <div className="relative z-10 mt-3 flex flex-col items-center text-center">
-              <div className="grid h-12 w-12 place-items-center rounded-full border border-white/12 bg-night-800/85 shadow-glow-sm backdrop-blur-md">
+              <div className="grid h-12 w-12 place-items-center rounded-full border border-brand-sand/[0.16] bg-[#15100D]/85 shadow-glow-sm">
                 <Store className="h-5 w-5 text-brand-orange" strokeWidth={1.6} />
               </div>
               <div className="relative mt-5 h-[108px]" style={{ width: CORE_W }}>
@@ -288,10 +288,10 @@ export default function Hero() {
                   <motion.div
                     key={seg.id}
                     className="absolute inset-x-0 top-0"
-                    initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+                    initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <h2 className="whitespace-nowrap text-[50px] font-bold leading-none tracking-tight text-brand-cream drop-shadow-[0_4px_30px_rgba(0,0,0,.7)]">
                       {seg.name}
@@ -331,7 +331,7 @@ export default function Hero() {
         className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[12.5px] text-brand-cream/45 transition-colors hover:text-brand-cream/80 xl:flex"
       >
         Role para explorar
-        <span className="grid h-9 w-9 animate-floaty place-items-center rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md">
+        <span className="grid h-9 w-9 animate-floaty place-items-center rounded-full border border-brand-sand/[0.18] bg-[#8B5E3C]/[0.10]">
           <ChevronDown className="h-4 w-4" />
         </span>
       </a>

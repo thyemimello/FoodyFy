@@ -134,7 +134,7 @@ export default function CardapioMock({ inerte = false }: { inerte?: boolean }) {
             <button
               type="button"
               disabled={inerte}
-              className="grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-sm transition-colors hover:bg-white/20"
+              className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
             >
               <ArrowLeft className="h-[17px] w-[17px]" strokeWidth={2.2} />
             </button>
@@ -142,14 +142,14 @@ export default function CardapioMock({ inerte = false }: { inerte?: boolean }) {
               <button
                 type="button"
                 disabled={inerte}
-                className="group/fav grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-sm transition-colors hover:bg-brand-orange/25"
+                className="group/fav grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-brand-orange/25"
               >
                 <Heart className="h-[16px] w-[16px] transition-colors group-hover/fav:fill-brand-orange group-hover/fav:text-brand-orange" strokeWidth={2.2} />
               </button>
               <button
                 type="button"
                 disabled={inerte}
-                className="grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-sm transition-colors hover:bg-white/20"
+                className="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
               >
                 <Share2 className="h-[15px] w-[15px]" strokeWidth={2.2} />
               </button>

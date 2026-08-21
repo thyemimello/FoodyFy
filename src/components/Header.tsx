@@ -25,7 +25,7 @@ export default function Header({ onLogin }: { onLogin: () => void }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/[0.07] bg-night-900/80 backdrop-blur-xl"
+          ? "border-b border-brand-sand/[0.11] bg-[#15100D]/80 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
@@ -64,7 +64,7 @@ export default function Header({ onLogin }: { onLogin: () => void }) {
             type="button"
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.04] lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-brand-sand/[0.16] bg-[#8B5E3C]/[0.10] lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -73,7 +73,7 @@ export default function Header({ onLogin }: { onLogin: () => void }) {
 
       {/* menu mobile */}
       <div
-        className={`overflow-hidden border-t border-white/[0.06] bg-night-900/95 backdrop-blur-xl transition-[max-height] duration-500 lg:hidden ${
+        className={`overflow-hidden bg-[#15100D]/95 backdrop-blur-xl transition-[max-height] duration-500 lg:hidden ${
           open ? "max-h-[420px]" : "max-h-0"
         }`}
       >
@@ -83,7 +83,7 @@ export default function Header({ onLogin }: { onLogin: () => void }) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-3 py-3 text-[16px] text-brand-cream/80 transition-colors hover:bg-white/[0.05] hover:text-brand-cream"
+              className="rounded-xl px-3 py-3 text-[16px] text-brand-cream/80 transition-colors hover:bg-[#8B5E3C]/[0.13] hover:text-brand-cream"
             >
               {item.label}
             </a>

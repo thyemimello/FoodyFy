@@ -20,14 +20,31 @@ export default function Showcase() {
   const deslocamento = useTransform(scrollYProgress, [0, 1], [18, -26]);
   const inclinacao = useTransform(scrollYProgress, [0, 0.5, 1], [1.2, 0.4, -0.3]);
 
+  /**
+   * De onde sai a etapa ativa.
+   *
+   * No desktop são os marcadores invisíveis distribuídos ao longo do rolo. No
+   * celular o rolo tem `display:none`, e elemento oculto devolve retângulo
+   * zerado — todos os marcadores empatavam em zero e o índice 0 vencia sempre,
+   * travando o destaque na etapa 01. Quando os marcadores não são mensuráveis,
+   * a referência passa a ser a própria lista, que está visível.
+   */
+  const referencias = () => {
+    const paineis = paineisRef.current;
+    const mensuravel =
+      paineis[0] && paineis[0].getBoundingClientRect().height > 0;
+    return mensuravel ? paineis : itensRef.current;
+  };
+
   useEffect(() => {
     const atualizarEtapa = () => {
       const centro = window.innerHeight * 0.48;
       let maisProximo = 0;
       let distancia = Number.POSITIVE_INFINITY;
-      paineisRef.current.forEach((painel, index) => {
-        if (!painel) return;
-        const caixa = painel.getBoundingClientRect();
+      referencias().forEach((alvo, index) => {
+        if (!alvo) return;
+        const caixa = alvo.getBoundingClientRect();
+        if (caixa.height === 0) return;
         const atual = Math.abs(caixa.top + caixa.height / 2 - centro);
         if (atual < distancia) {
           distancia = atual;
@@ -48,56 +65,52 @@ export default function Showcase() {
 
   const selecionarEtapa = (index: number) => {
     setAtivo(index);
-    paineisRef.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    /* só faz sentido rolar até o painel quando o rolo está na tela; no
+       celular o clique apenas destaca a etapa */
+    const painel = paineisRef.current[index];
+    if (painel && painel.getBoundingClientRect().height > 0) {
+      painel.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   };
 
   return (
-    <section ref={secaoRef} id="recursos" className="relative overflow-hidden bg-night-900 py-16 lg:py-20">
+    <section ref={secaoRef} id="recursos" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+      {/* No celular o rolo não cabe como peça: a 375px de largura ele fica
+          ilegível. Em vez de sumir de vez, volta como textura bem apagada
+          atrás da trilha — 67 KB no lugar dos 1,6 MB do PNG original. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden lg:hidden">
+        <img
+          src="/showcase-mobile-fundo.jpg"
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-cover object-top opacity-[.13]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0A0806_0%,rgba(10,8,6,.55)_22%,rgba(10,8,6,.55)_78%,#0A0806_100%)]" />
+      </div>
+
       <div className="pointer-events-none absolute inset-x-0 top-[12%] h-[70%] bg-[radial-gradient(ellipse_at_68%_40%,rgba(255,138,0,.16),transparent_62%)]" />
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-start gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(270px,34%)_minmax(0,1fr)] lg:gap-x-4 lg:px-10">
         <aside className="relative z-10 flex flex-col max-lg:contents lg:pt-6">
           <header className="max-lg:order-1">
             <p className="text-[11px] font-semibold uppercase tracking-[.14em] text-brand-orange">Veja o FoodFy em ação</p>
-            <h2 className="mt-5 text-[38px] font-semibold leading-[1.04] tracking-[-.04em] text-white sm:text-[44px]">Tudo o que você precisa para <span className="text-brand-orange">vender mais.</span></h2>
-            <p className="mt-5 max-w-[320px] text-[13.5px] leading-[1.65] text-white/55">Atendimento, pedidos, estoque e financeiro trabalhando juntos para você ganhar agilidade, reduzir erros e aumentar seus resultados.</p>
+            <h2 className="mt-5 text-[38px] font-semibold leading-[1.04] tracking-[-.04em] text-brand-cream sm:text-[44px]">Tudo o que você precisa para <span className="text-brand-orange">vender mais.</span></h2>
+            <p className="mt-5 max-w-[320px] text-[13.5px] leading-[1.65] text-brand-cream/55">Atendimento, pedidos, estoque e financeiro trabalhando juntos para você ganhar agilidade, reduzir erros e aumentar seus resultados.</p>
           </header>
 
-          {/* No celular o rolo inteiro é ilegível a 375px, então ele some — mas a
-              seção não pode ficar sem nenhuma tela do produto. Entra um print
-              único, em moldura, logo abaixo do título. */}
-          <div className="max-lg:order-2 lg:hidden">
-            <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-night-800 shadow-[0_30px_60px_-30px_rgba(0,0,0,1)]">
-              <div className="flex items-center gap-1.5 border-b border-white/[0.07] bg-white/[0.03] px-3 py-2.5">
-                <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
-                <span className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
-                <span className="h-2 w-2 rounded-full bg-[#28C840]" />
-                <span className="ml-2 truncate rounded bg-black/30 px-2 py-0.5 text-[10px] text-white/40">
-                  app.foodfy.club/pdv
-                </span>
-              </div>
-              <img
-                src="/prints/pdv.png"
-                alt="Tela do PDV do FoodFy"
-                loading="lazy"
-                className="block w-full"
-              />
-            </div>
-          </div>
-
           <ol className="relative mt-12 max-w-[310px] max-lg:order-3">
-            <span aria-hidden="true" className="absolute bottom-8 left-[6px] top-8 w-px bg-white/15" />
+            <span aria-hidden="true" className="absolute bottom-8 left-[6px] top-8 w-px bg-[#8B5E3C]/30" />
             {ETAPAS.map((etapa, index) => {
               const Icon = etapa.icon;
               const destaque = index === ativo;
               return (
                 <li key={etapa.titulo} ref={(elemento) => { itensRef.current[index] = elemento; }} className="relative flex gap-4 max-lg:min-h-0 sm:gap-5 lg:min-h-[132px]">
-                  <span aria-hidden="true" className={`relative z-10 mt-[38px] h-[13px] w-[13px] shrink-0 rounded-full border-2 transition-all duration-300 ${destaque ? "border-brand-orange bg-brand-orange shadow-[0_0_14px_rgba(255,138,0,.85)]" : "border-white/25 bg-night-900"}`} />
-                  <button type="button" aria-current={destaque ? "step" : undefined} aria-label={`Ver ${etapa.titulo}`} onClick={() => selecionarEtapa(index)} className={`group mb-3 flex flex-1 gap-3.5 rounded-2xl border p-3.5 text-left lg:mb-4 lg:gap-4 lg:p-4 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-brand-orange ${destaque ? "border-brand-orange/45 bg-white/[.045] shadow-[0_12px_34px_-22px_rgba(255,138,0,.7)]" : "border-transparent hover:border-white/15 hover:bg-white/[.025]"}`}>
-                    <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors ${destaque ? "border-brand-orange/40 text-brand-orange" : "border-white/15 text-white/80 group-hover:border-white/30"}`}><Icon className="h-[19px] w-[19px]" strokeWidth={1.6} /></span>
+                  <span aria-hidden="true" className={`relative z-10 mt-[38px] h-[13px] w-[13px] shrink-0 rounded-full border-2 transition-all duration-300 ${destaque ? "border-brand-orange bg-brand-orange shadow-[0_0_14px_rgba(255,138,0,.85)]" : "border-brand-sand/[0.28] bg-[#15100D]"}`} />
+                  <button type="button" aria-current={destaque ? "step" : undefined} aria-label={`Ver ${etapa.titulo}`} onClick={() => selecionarEtapa(index)} className={`group mb-3 flex flex-1 gap-3.5 rounded-2xl border p-3.5 text-left lg:mb-4 lg:gap-4 lg:p-4 outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-brand-orange ${destaque ? "border-brand-orange/45 bg-[#8B5E3C]/[0.12] shadow-[0_12px_34px_-22px_rgba(255,138,0,.7)]" : "border-transparent hover:border-brand-sand/[0.18] hover:bg-[#8B5E3C]/[0.07]"}`}>
+                    <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors ${destaque ? "border-brand-orange/40 text-brand-orange" : "border-brand-sand/[0.18] text-brand-cream/80 group-hover:border-white/30"}`}><Icon className="h-[19px] w-[19px]" strokeWidth={1.6} /></span>
                     <span className="min-w-0">
-                      <span className={`text-[10px] font-semibold tracking-wider ${destaque ? "text-brand-orange" : "text-white/40"}`}>{String(index + 1).padStart(2, "0")}</span>
-                      <span className="mt-1 block text-[17px] font-medium leading-tight text-white/90">{etapa.titulo}</span>
-                      <span className="mt-2 block text-[12.5px] leading-[1.5] text-white/50">{etapa.texto}</span>
+                      <span className={`text-[10px] font-semibold tracking-wider ${destaque ? "text-brand-orange" : "text-brand-cream/40"}`}>{String(index + 1).padStart(2, "0")}</span>
+                      <span className="mt-1 block text-[17px] font-medium leading-tight text-brand-cream/90">{etapa.titulo}</span>
+                      <span className="mt-2 block text-[12.5px] leading-[1.5] text-brand-cream/50">{etapa.texto}</span>
                     </span>
                   </button>
                 </li>
@@ -106,8 +119,8 @@ export default function Showcase() {
           </ol>
 
           <div className="mt-2 max-w-[225px] rounded-2xl border border-brand-orange/40 bg-black/45 p-5 max-lg:order-4">
-            <p className="text-[17px] leading-[1.45] text-white"><span className="text-brand-orange">T</span>udo conectado.<br />Tudo em um só lugar.</p>
-            <p className="mt-4 text-[12px] leading-[1.5] text-white/45">Mais controle, mais agilidade e mais resultado para o seu negócio.</p>
+            <p className="text-[17px] leading-[1.45] text-brand-cream"><span className="text-brand-orange">T</span>udo conectado.<br />Tudo em um só lugar.</p>
+            <p className="mt-4 text-[12px] leading-[1.5] text-brand-cream/45">Mais controle, mais agilidade e mais resultado para o seu negócio.</p>
           </div>
         </aside>
 

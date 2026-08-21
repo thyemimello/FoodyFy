@@ -18,13 +18,18 @@ export default {
           ink: "#24201E",
           mud: "#746B66",
           sand: "#EADFD7",
+          brown: "#8B5E3C",
+          warm: "#A2938A",
         },
+        /* Tradução do guia para tema escuro. O fundo não é preto neutro: é o
+           Marrom Escuro #24201E rebaixado, então tudo que fica por cima herda
+           temperatura quente em vez de cinza. */
         night: {
-          900: "#080605",
-          800: "#0D0A08",
-          700: "#141010",
-          600: "#1C1715",
-          500: "#2A2320",
+          900: "#15100D",
+          800: "#1B1511",
+          700: "#221A15",
+          600: "#2A211B",
+          500: "#372B23",
         },
       },
       boxShadow: {

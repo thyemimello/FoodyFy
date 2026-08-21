@@ -61,8 +61,8 @@ const MODULES = [
 
 export default function Modules() {
   return (
-    <section id="solucoes" className="relative overflow-hidden bg-night-800 py-28">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-brand-orange/[0.06] blur-[120px]" />
+    <section id="solucoes" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#8B5E3C]/[0.16] blur-[80px]" />
 
       <div className="relative mx-auto max-w-[1240px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
@@ -81,17 +81,17 @@ export default function Modules() {
           {MODULES.map((m, i) => (
             <motion.article
               key={m.title}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden rounded-[22px] border border-white/[0.07] bg-white/[0.03] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/30 hover:bg-white/[0.055] sm:p-7"
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative overflow-hidden rounded-[22px] border border-brand-sand/[0.11] bg-[#8B5E3C]/[0.08] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/30 hover:bg-[#8B5E3C]/[0.15] sm:p-7"
             >
-              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-orange/0 blur-[50px] transition-all duration-700 group-hover:bg-brand-orange/25" />
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-orange/0 blur-[50px] transition-all duration-700 group-hover:bg-[#8B5E3C]/40" />
               <div className="relative">
                 <div className="flex items-center gap-3 sm:block">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-brand-orange/25 bg-gradient-to-br from-brand-orange/20 to-brand-red/10 sm:h-12 sm:w-12">
-                    <m.icon className="h-5 w-5 text-brand-orange sm:h-[22px] sm:w-[22px]" strokeWidth={1.6} />
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-brand-sand/[0.14] bg-gradient-to-br from-[#8B5E3C]/30 to-[#8B5E3C]/10 sm:h-12 sm:w-12">
+                    <m.icon className="h-5 w-5 text-brand-sand sm:h-[22px] sm:w-[22px]" strokeWidth={1.6} />
                   </span>
                   <h3 className="text-[17px] font-semibold text-brand-cream sm:mt-5 sm:text-[19px]">
                     {m.title}
