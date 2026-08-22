@@ -74,7 +74,7 @@ export default function Pricing() {
 
   return (
     <section id="precos" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
+      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 -translate-y-0 rounded-full bg-brand-orange/[0.03] blur-[90px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="mx-auto max-w-[680px] text-center">
@@ -100,7 +100,7 @@ export default function Pricing() {
                 onClick={() => setPeriod(o.id as BillingPeriod)}
                 className={`rounded-full px-3 py-2.5 text-[12px] font-medium transition-all duration-300 sm:px-5 sm:text-[14px] ${
                   period === o.id
-                    ? "bg-gradient-to-r from-brand-orange to-[#FFA02E] text-brand-cream shadow-[0_6px_18px_-8px_rgba(255,138,0,.9)]"
+                    ? "bg-gradient-to-r from-brand-orange to-[#FFA02E] text-brand-cream shadow-[0_4px_12px_-8px_rgba(255,138,0,.35)]"
                     : "text-brand-cream/50 hover:text-brand-cream"
                 }`}
               >
@@ -122,7 +122,7 @@ export default function Pricing() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className={`relative flex w-[84%] shrink-0 snap-center sm:w-auto sm:shrink flex-col overflow-hidden rounded-[26px] border p-6 sm:p-8 ${
                 p.highlight
-                  ? "border-brand-orange/70 bg-gradient-to-b from-[#372B23] to-[#221A15] shadow-[0_32px_80px_-34px_rgba(255,138,0,.5)] lg:-mt-4 lg:pb-11 lg:pt-11"
+                  ? "border-brand-orange/45 bg-gradient-to-b from-[#372B23] to-[#221A15] shadow-[0_24px_60px_-36px_rgba(255,138,0,.22)] lg:-mt-4 lg:pb-11 lg:pt-11"
                   : "border-brand-sand/[0.13] bg-[#8B5E3C]/[0.09]"
               }`}
             >

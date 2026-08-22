@@ -31,7 +31,7 @@ const CONTACT_EMAIL = "contato@zurve.io";
 export function HowItWorks() {
   return (
     <section id="sobre" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.03] blur-[90px]" />
       <div className="relative mx-auto max-w-[1120px] px-6">
         <div className="mx-auto max-w-[680px] text-center">
           <span className="section-eyebrow">Implantação</span>
@@ -59,7 +59,7 @@ export function HowItWorks() {
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="relative text-center"
             >
-              <span className="relative z-10 mx-auto grid h-[92px] w-[92px] place-items-center rounded-full border-2 border-brand-orange/55 bg-[#15100D] text-[26px] font-bold text-brand-orange shadow-[0_0_30px_-10px_rgba(255,138,0,.55)]">
+              <span className="relative z-10 mx-auto grid h-[92px] w-[92px] place-items-center rounded-full border-2 border-brand-orange/35 bg-[#15100D] text-[26px] font-bold text-brand-orange shadow-[0_0_18px_-12px_rgba(255,138,0,.22)]">
                 {s.n}
               </span>
               <h3 className="mt-6 text-[19px] font-semibold text-brand-cream">
@@ -180,13 +180,11 @@ export function Faq() {
 export function Cta() {
   return (
     <section id="contato" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.13] blur-[90px]" />
-
       <div className="relative mx-auto max-w-[980px] px-6">
-          <div className="overflow-hidden rounded-[32px] border border-brand-sand/[0.14] bg-gradient-to-b from-[#8B5E3C]/[0.18] to-[#8B5E3C]/[0.06] px-8 py-14 text-center sm:px-14">
+        <div className="overflow-hidden rounded-[32px] border border-white/[0.08] bg-[#1C1714] px-8 py-14 text-center sm:px-14">
           <h2 className="mx-auto max-w-[620px] text-[34px] font-bold leading-[1.15] tracking-tight text-brand-cream sm:text-[44px]">
             Quer ver funcionando{" "}
-            <span className="text-gradient-brand">com o seu cardápio?</span>
+            <span className="text-brand-orange">com o seu cardápio?</span>
           </h2>
           <p className="mx-auto mt-5 max-w-[520px] text-[16.5px] leading-relaxed text-brand-cream/60">
             Deixa o seu WhatsApp que a gente monta uma demonstração do sistema
@@ -216,9 +214,12 @@ export function Cta() {
               pattern="[0-9 ()+\-]{10,20}"
               placeholder="Seu WhatsApp com DDD"
               aria-label="WhatsApp com DDD"
-              className="w-full rounded-full border border-brand-sand/[0.16] bg-black/30 px-6 py-3.5 text-[15px] text-brand-cream placeholder:text-brand-cream/35 focus:border-brand-orange/70 focus:outline-none"
+              className="w-full rounded-full border border-white/12 bg-black/30 px-6 py-3.5 text-[15px] text-brand-cream placeholder:text-brand-cream/35 focus:border-brand-orange/70 focus:outline-none"
             />
-            <button type="submit" className="btn-primary shrink-0 justify-center">
+            <button
+              type="submit"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand-orange px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#F5741B]"
+            >
               Quero uma demonstração
               <ArrowRight className="h-[18px] w-[18px]" />
             </button>
@@ -228,7 +229,7 @@ export function Cta() {
             <Phone className="h-3.5 w-3.5" />
             A conversa é direto com o nosso time, pelo WhatsApp.
           </p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="-my-1 inline-block py-2 mt-3 inline-block text-[13px] text-brand-cream/40 transition-colors hover:text-brand-orange">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="-my-1 mt-3 inline-block py-2 text-[13px] text-brand-cream/40 transition-colors hover:text-brand-orange">
             Prefere e-mail? {CONTACT_EMAIL}
           </a>
         </div>

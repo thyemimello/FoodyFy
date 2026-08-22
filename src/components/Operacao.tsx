@@ -164,7 +164,7 @@ export function Salao() {
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <video
           src="/videos/atendimento-salao.mp4"
-          className="hidden h-full w-full object-cover lg:block lg:opacity-75"
+          className="hidden h-full w-full object-cover lg:block lg:opacity-95"
           autoPlay
           loop
           muted
@@ -177,10 +177,10 @@ export function Salao() {
           alt=""
           className="absolute right-[-42%] top-[13%] w-[138%] max-w-none opacity-[.20] mix-blend-screen lg:hidden"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,16,13,.88),rgba(21,16,13,.76)_30%,rgba(21,16,13,.88)_72%,rgba(21,16,13,.98))] lg:bg-[linear-gradient(90deg,rgba(21,16,13,.98)_0%,rgba(21,16,13,.92)_38%,rgba(21,16,13,.48)_72%,rgba(21,16,13,.30)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-[#15100D] via-[#15100D]/95 to-transparent lg:h-[25%]" />
-        <div className="absolute right-0 top-0 hidden h-[30%] w-[62%] bg-[radial-gradient(ellipse_at_72%_28%,rgba(21,16,13,.98)_0%,rgba(21,16,13,.94)_32%,rgba(21,16,13,.55)_58%,transparent_78%)] lg:block" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#15100D] to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,16,13,.94),rgba(21,16,13,.88)_30%,rgba(21,16,13,.92)_72%,rgba(21,16,13,.98))] lg:bg-[linear-gradient(90deg,rgba(21,16,13,.96)_0%,rgba(21,16,13,.62)_34%,rgba(21,16,13,.16)_68%,rgba(21,16,13,.04)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-[#15100D] via-[#15100D]/95 to-transparent lg:h-[14%] lg:via-[#15100D]/40" />
+        <div className="absolute right-0 top-0 hidden h-[22%] w-[55%] bg-[radial-gradient(ellipse_at_72%_28%,rgba(21,16,13,.55)_0%,rgba(21,16,13,.22)_48%,transparent_74%)] lg:block" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#15100D] to-transparent lg:h-[16%] lg:from-[#15100D]/55" />
       </div>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-[58%] bg-[radial-gradient(ellipse_at_34%_46%,rgba(255,120,20,.09),transparent_68%)]" />
 
@@ -385,7 +385,7 @@ function TelaFiscal() {
       {/* poça de luz quente no chão, atrás do aparelho */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-18%] bottom-[-10%] top-[2%] bg-[radial-gradient(ellipse_58%_48%_at_48%_76%,rgba(255,124,20,.42),transparent_68%)] blur-2xl transition-opacity duration-700 group-hover/tela:opacity-90"
+        className="pointer-events-none absolute inset-x-[-18%] bottom-[-10%] top-[2%] bg-[radial-gradient(ellipse_58%_48%_at_48%_76%,rgba(255,124,20,.12),transparent_68%)] blur-2xl transition-opacity duration-700 group-hover/tela:opacity-80"
       />
 
       <motion.div {...ENTRADA} className="relative">
@@ -426,7 +426,7 @@ function TelaFiscal() {
           />
           <div
             aria-hidden="true"
-            className="relative mx-auto h-[17px] w-[36%] -translate-y-0.5 rounded-[50%] border-t border-white/[0.10] bg-[linear-gradient(180deg,#49443F_0%,#211E1B_42%,#0D0B0A_100%)] shadow-[0_28px_42px_-12px_rgba(0,0,0,1),0_7px_20px_-8px_rgba(255,125,20,.25)]"
+            className="relative mx-auto h-[17px] w-[36%] -translate-y-0.5 rounded-[50%] border-t border-white/[0.10] bg-[linear-gradient(180deg,#49443F_0%,#211E1B_42%,#0D0B0A_100%)] shadow-[0_28px_42px_-12px_rgba(0,0,0,1)]"
           />
         </div>
       </motion.div>
@@ -442,7 +442,7 @@ function TelaFiscal() {
               ["", "xl:-ml-2.5 xl:mr-2.5", "xl:-ml-5 xl:mr-5"][i]
             }`}
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-red shadow-[0_10px_22px_-10px_rgba(255,120,20,.9)]">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-orange to-brand-red shadow-[0_8px_16px_-12px_rgba(255,120,20,.28)]">
               <a.icon className="h-[18px] w-[18px] text-white" strokeWidth={1.9} />
             </span>
             <span className="min-w-0 flex-1 leading-tight">
@@ -468,7 +468,7 @@ export function NotasFiscais() {
       className="relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 lg:min-h-[900px] lg:py-24"
     >
       {/* a luz vem do lado dos telas, como se as telas iluminassem a seção */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_48%_62%_at_67%_55%,rgba(255,120,20,.24),transparent_70%),radial-gradient(ellipse_35%_55%_at_36%_46%,rgba(120,55,20,.16),transparent_72%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_48%_62%_at_67%_55%,rgba(255,120,20,.08),transparent_70%),radial-gradient(ellipse_35%_55%_at_36%_46%,rgba(120,55,20,.06),transparent_72%)]" />
 
       <div className="relative mx-auto max-w-[1500px] px-6 lg:px-10">
         <div className="grid items-center gap-14 xl:grid-cols-[minmax(500px,.82fr)_minmax(0,1.18fr)] xl:gap-5">
@@ -507,7 +507,7 @@ export function NotasFiscais() {
                   {...ENTRADA}
                   className="group rounded-[22px] border border-brand-sand/[0.12] bg-[#8B5E3C]/[0.08] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-brand-orange/35 hover:bg-[#8B5E3C]/[0.14]"
                 >
-                  <span className="grid h-12 w-12 place-items-center rounded-[14px] bg-gradient-to-br from-brand-orange to-brand-red shadow-[0_10px_26px_-10px_rgba(255,120,20,.9)] transition-transform duration-500 group-hover:scale-105">
+                  <span className="grid h-12 w-12 place-items-center rounded-[14px] bg-gradient-to-br from-brand-orange to-brand-red shadow-[0_8px_18px_-12px_rgba(255,120,20,.28)] transition-transform duration-500 group-hover:scale-105">
                     <d.icon
                       className="h-[22px] w-[22px] text-white"
                       strokeWidth={1.9}
@@ -543,7 +543,7 @@ export function NotasFiscais() {
             {/* ---------------- o caminho da nota ---------------- */}
             <motion.ol
               {...ENTRADA}
-              className="mt-6 flex max-w-[590px] flex-col gap-3.5 rounded-[22px] border border-brand-orange/25 bg-[linear-gradient(100deg,rgba(255,120,20,.10),rgba(139,94,60,.08))] px-4 py-4 sm:flex-row sm:flex-nowrap sm:items-center sm:justify-between sm:gap-x-2 sm:gap-y-4"
+              className="mt-6 flex max-w-[590px] flex-col gap-3.5 rounded-[22px] border border-brand-orange/18 bg-[linear-gradient(100deg,rgba(255,120,20,.04),rgba(139,94,60,.05))] px-4 py-4 sm:flex-row sm:flex-nowrap sm:items-center sm:justify-between sm:gap-x-2 sm:gap-y-4"
             >
               {FLUXO.map((f, i) => (
                 <li key={f.linha1} className="flex items-center gap-3">
@@ -661,7 +661,7 @@ export function Fiscal() {
       id="fiscal"
       className="relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 lg:py-28"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_52%_38%_at_50%_8%,rgba(255,120,20,.13),transparent_72%),radial-gradient(ellipse_42%_52%_at_78%_55%,rgba(139,94,60,.10),transparent_75%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_52%_38%_at_50%_8%,rgba(255,120,20,.05),transparent_72%),radial-gradient(ellipse_42%_52%_at_78%_55%,rgba(139,94,60,.05),transparent_75%)]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="mx-auto max-w-[900px] text-center">
@@ -733,7 +733,7 @@ export function Fiscal() {
 
             <motion.div
               {...ENTRADA}
-              className="mt-6 flex items-center gap-3 rounded-2xl border border-brand-orange/30 bg-[linear-gradient(100deg,rgba(255,120,20,.12),rgba(139,94,60,.08))] p-4"
+              className="mt-6 flex items-center gap-3 rounded-2xl border border-brand-orange/18 bg-[linear-gradient(100deg,rgba(255,120,20,.04),rgba(139,94,60,.05))] p-4"
             >
               <Truck
                 className="h-[18px] w-[18px] shrink-0 text-brand-orange"
