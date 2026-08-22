@@ -257,7 +257,7 @@ export default function Hero() {
               <div className="relative grid h-[440px] w-[440px] place-items-center overflow-hidden rounded-full border border-brand-sand/[0.13] bg-[radial-gradient(circle_at_50%_38%,#1A1411_0%,#0A0706_72%)] shadow-[0_0_90px_-40px_rgba(255,138,0,.3),inset_0_0_80px_rgba(0,0,0,.95)]">
                 {/* marca em vetor: aparece enquanto o vídeo carrega */}
                 <div
-                  className="absolute inset-0 transition-opacity duration-700"
+                  className="hero-logo-fallback absolute inset-0 transition-opacity duration-700"
                   style={{ opacity: videoPronto ? 0 : 1 }}
                 >
                   <FoodfyCore />
@@ -268,7 +268,7 @@ export default function Hero() {
                     a marca fica sozinha e centrada no disco */}
                 <LogoLoopVideo
                   src="/videos/foodfy-logo.mp4"
-                  className="w-[580px]"
+                  className="hero-logo-video w-[580px]"
                   style={{ filter: "url(#foodfy-key)" }}
                   onReady={() => setVideoPronto(true)}
                 />

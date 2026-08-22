@@ -268,3 +268,15 @@
 .noise-overlay {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
+
+/* O Safari do iOS não compõe de forma confiável o filtro SVG que remove o
+   fundo claro do vídeo da marca. No celular usamos a versão vetorial nativa;
+   a partir de sm o vídeo continua sendo exibido normalmente. */
+@media (max-width: 639px) {
+  .hero-logo-video {
+    display: none !important;
+  }
+  .hero-logo-fallback {
+    opacity: 1 !important;
+  }
+}
