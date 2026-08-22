@@ -2,13 +2,46 @@ import { useEffect, useRef, useState } from "react";
 import { Bike, Boxes, FileText, LayoutDashboard, QrCode, Store } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+/* Estes são os mesmos seis módulos da seção "Soluções", mas enquadrados como
+   momentos da operação, não como catálogo de recursos. A seção 2 responde
+   "o que o sistema tem"; esta responde "como o dia funciona com ele". */
 const ETAPAS = [
-  { titulo: "PDV e balcão", texto: "Venda rápida, múltiplas formas de pagamento, abertura e fechamento de caixa.", icon: Store },
-  { titulo: "Delivery e mesas", texto: "Atendimento no salão ou delivery integrado, com controle de pedidos em tempo real.", icon: Bike },
-  { titulo: "Cardápio digital", texto: "Cardápio online, categorias, adicionais e combos.", icon: QrCode },
-  { titulo: "Gestão e financeiro", texto: "Relatórios completos, fluxo de caixa, contas a pagar e receber e DRE.", icon: LayoutDashboard },
-  { titulo: "Estoque", texto: "Controle de estoque em tempo real, fichas técnicas e inventário.", icon: Boxes },
-  { titulo: "Fiscal", texto: "Emissão de notas fiscais, SAT, NFC-e, NF-e e relatórios fiscais.", icon: FileText },
+  {
+    titulo: "O pedido entra",
+    texto:
+      "Balcão, mesa, delivery próprio ou iFood: todo pedido cai na mesma fila, sem ninguém redigitar nada.",
+    icon: Store,
+  },
+  {
+    titulo: "A cozinha produz",
+    texto:
+      "A comanda imprime na produção com adicionais e observações, e o salão acompanha o tempo de cada mesa.",
+    icon: Bike,
+  },
+  {
+    titulo: "O cliente faz o próprio pedido",
+    texto:
+      "O cardápio digital abre pelo QR Code da mesa ou pelo link, com foto, preço e disponibilidade atualizados.",
+    icon: QrCode,
+  },
+  {
+    titulo: "O caixa fecha certo",
+    texto:
+      "Sangria, suprimento, formas de pagamento e conferência no fim do turno, sem planilha paralela.",
+    icon: LayoutDashboard,
+  },
+  {
+    titulo: "O estoque baixa junto",
+    texto:
+      "A ficha técnica desconta o insumo a cada venda, então o saldo do fim do dia é o saldo real.",
+    icon: Boxes,
+  },
+  {
+    titulo: "A nota sai na hora",
+    texto:
+      "NFC-e no cupom do balcão e NF-e nos pedidos maiores, com o arquivo do contador pronto no fim do mês.",
+    icon: FileText,
+  },
 ];
 
 export default function Showcase() {
@@ -74,27 +107,21 @@ export default function Showcase() {
   };
 
   return (
-    <section ref={secaoRef} id="recursos" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+    <section ref={secaoRef} id="recursos" className="relative overflow-hidden bg-[#15100D] pb-10 pt-16 sm:pt-20 lg:pb-12 lg:pt-32">
       {/* No celular o rolo não cabe como peça: a 375px de largura ele fica
           ilegível. Em vez de sumir de vez, volta como textura bem apagada
           atrás da trilha — 67 KB no lugar dos 1,6 MB do PNG original. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden lg:hidden">
-        <img
-          src="/showcase-mobile-fundo.jpg"
-          alt=""
-          loading="lazy"
-          className="h-full w-full object-cover object-top opacity-[.13]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0A0806_0%,rgba(10,8,6,.55)_22%,rgba(10,8,6,.55)_78%,#0A0806_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_38%_at_70%_24%,rgba(255,138,0,.10),transparent_72%)]" />
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 top-[12%] h-[70%] bg-[radial-gradient(ellipse_at_68%_40%,rgba(255,138,0,.16),transparent_62%)]" />
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-start gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(270px,34%)_minmax(0,1fr)] lg:gap-x-4 lg:px-10">
         <aside className="relative z-10 flex flex-col max-lg:contents lg:pt-6">
           <header className="max-lg:order-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[.14em] text-brand-orange">Veja o FoodFy em ação</p>
-            <h2 className="mt-5 text-[38px] font-semibold leading-[1.04] tracking-[-.04em] text-brand-cream sm:text-[44px]">Tudo o que você precisa para <span className="text-brand-orange">vender mais.</span></h2>
-            <p className="mt-5 max-w-[320px] text-[13.5px] leading-[1.65] text-brand-cream/55">Atendimento, pedidos, estoque e financeiro trabalhando juntos para você ganhar agilidade, reduzir erros e aumentar seus resultados.</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[.14em] text-brand-orange">Um dia de operação</p>
+            <h2 className="mt-5 text-[38px] font-semibold leading-[1.04] tracking-[-.04em] text-brand-cream sm:text-[44px]">Do primeiro pedido<br />até a <span className="text-brand-orange">nota fiscal.</span></h2>
+            <p className="mt-5 max-w-[320px] text-[13.5px] leading-[1.65] text-brand-cream/55">Veja o que acontece depois que o pedido entra. Cada etapa atualiza a próxima, da cozinha à nota fiscal.</p>
           </header>
 
           <ol className="relative mt-12 max-w-[310px] max-lg:order-3">
@@ -119,8 +146,8 @@ export default function Showcase() {
           </ol>
 
           <div className="mt-2 max-w-[225px] rounded-2xl border border-brand-orange/40 bg-black/45 p-5 max-lg:order-4">
-            <p className="text-[17px] leading-[1.45] text-brand-cream"><span className="text-brand-orange">T</span>udo conectado.<br />Tudo em um só lugar.</p>
-            <p className="mt-4 text-[12px] leading-[1.5] text-brand-cream/45">Mais controle, mais agilidade e mais resultado para o seu negócio.</p>
+            <p className="text-[17px] leading-[1.45] text-brand-cream"><span className="text-brand-orange">O</span> pedido entra uma vez.<br />O sistema faz o resto.</p>
+            <p className="mt-4 text-[12px] leading-[1.5] text-brand-cream/45">Cozinha, caixa, estoque e fiscal recebem os mesmos dados.</p>
           </div>
         </aside>
 

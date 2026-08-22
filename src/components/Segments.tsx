@@ -4,13 +4,43 @@ import { ArrowUpRight } from "lucide-react";
 import { SEGMENTS, type Segment } from "../data/segments";
 import SegmentStrip from "./SegmentStrip";
 
-const DETAIL: Record<string, string[]> = {
-  cafeteria: ["Fila do balcão", "Cartão fidelidade", "Combo café + doce"],
-  hamburgueria: ["Pico da noite", "Monte seu burger", "Delivery próprio"],
-  restaurante: ["Mesas e comandas", "Prato feito e à la carte", "Conta dividida"],
-  bar: ["Comanda individual", "Happy hour", "Fecha mesa rápido"],
-  lanchonete: ["Venda rápida", "Ficha técnica", "Pedido no WhatsApp"],
-  pizzaria: ["Meio a meio", "Bordas e adicionais", "Rota do entregador"],
+/**
+ * Cada segmento é um agrupamento de busca próprio ("sistema para pizzaria",
+ * "sistema para cafeteria"). Por isso cada um tem texto específico, com a dor
+ * real daquele tipo de casa — repetir os mesmos chips genéricos não rankeia
+ * nem convence.
+ */
+const DETAIL: Record<string, { texto: string; chips: string[] }> = {
+  cafeteria: {
+    texto:
+      "Fila no balcão pela manhã e ticket baixo: o PDV precisa fechar a venda em segundos e o cartão fidelidade tem que caber no mesmo fluxo.",
+    chips: ["Venda rápida no balcão", "Cartão fidelidade", "Combo café + doce"],
+  },
+  hamburgueria: {
+    texto:
+      "O movimento explode das 19h às 23h. Monte-seu-burger com adicionais, comanda na chapa e delivery próprio rodando ao mesmo tempo.",
+    chips: ["Pico da noite", "Adicionais no cardápio", "Delivery próprio"],
+  },
+  restaurante: {
+    texto:
+      "Salão cheio no almoço exige mapa de mesas, comanda por assento e divisão de conta sem travar a fila do caixa.",
+    chips: ["Mesas e comandas", "Prato feito e à la carte", "Conta dividida"],
+  },
+  bar: {
+    texto:
+      "Comanda individual, rodada puxada no grito e fechamento rápido no fim da noite, com taxa de serviço calculada sozinha.",
+    chips: ["Comanda individual", "Happy hour", "Taxa de serviço"],
+  },
+  lanchonete: {
+    texto:
+      "Margem apertada pede ficha técnica de verdade: saber o custo do lanche e ver o insumo baixar a cada venda.",
+    chips: ["Ficha técnica", "Pedido no WhatsApp", "Custo por produto"],
+  },
+  pizzaria: {
+    texto:
+      "Meio a meio, borda recheada e rota de entrega. O cardápio digital precisa dar conta da combinação sem erro na cozinha.",
+    chips: ["Meio a meio", "Bordas e adicionais", "Rota do entregador"],
+  },
 };
 
 const TROCA_MS = 5000;
@@ -41,18 +71,26 @@ function CardSegmento({ seg, compacto }: { seg: Segment; compacto?: boolean }) {
             <img src={seg.photo} alt="" className="h-full w-full object-cover" />
           </span>
 
-          <h3
-            className={`flex items-center gap-2 font-semibold text-brand-cream ${
-              compacto ? "text-[20px]" : "text-[19px] sm:mt-5 sm:text-[21px]"
-            }`}
-          >
-            Sistema para {seg.name.toLowerCase()}
-            <ArrowUpRight className="h-[18px] w-[18px] text-brand-orange opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
-          </h3>
+          {/* o card do celular repete o mesmo conteúdo da grade; se os dois
+              emitirem H3, cada segmento aparece duplicado para o buscador */}
+          {compacto ? (
+            <p className="flex items-center gap-2 text-[20px] font-semibold text-brand-cream">
+              Sistema para {seg.name.toLowerCase()}
+            </p>
+          ) : (
+            <h3 className="flex items-center gap-2 text-[19px] font-semibold text-brand-cream sm:mt-5 sm:text-[21px]">
+              Sistema para {seg.name.toLowerCase()}
+              <ArrowUpRight className="h-[18px] w-[18px] text-brand-orange opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
+            </h3>
+          )}
         </div>
 
+        <p className="mt-3 text-[13.5px] leading-relaxed text-brand-cream/55">
+          {DETAIL[seg.id]?.texto}
+        </p>
+
         <div className="mt-3.5 flex flex-wrap gap-2 sm:mt-4">
-          {DETAIL[seg.id]?.map((d) => (
+          {DETAIL[seg.id]?.chips.map((d) => (
             <span
               key={d}
               className="rounded-full border border-brand-sand/[0.16] bg-[#8B5E3C]/[0.16] px-3 py-1.5 text-[12.5px] text-brand-cream/70"
@@ -87,17 +125,18 @@ export default function Segments() {
   };
 
   return (
-    <section id="clientes" className="relative overflow-hidden bg-[#15100D] py-20 sm:py-24 lg:py-32">
+    <section id="clientes" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
       <div className="relative mx-auto max-w-[1240px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
           <span className="section-eyebrow">Segmentos</span>
           <h2 className="mt-6 text-[38px] font-bold leading-[1.14] tracking-tight text-brand-cream sm:text-[46px]">
-            Cada casa trabalha{" "}
-            <span className="text-gradient-brand">de um jeito</span>
+            A mesma base, configurada para{" "}
+            <span className="text-gradient-brand">a rotina da sua loja</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-brand-cream/60">
-            Cafeterias vendem rápido no balcão de manhã. Pizzaria vive de
-            delivery na sexta à noite. O sistema se ajusta aos dois.
+            Uma cafeteria precisa ganhar tempo no balcão. Uma pizzaria precisa
+            organizar adicionais e entregas. O FoodFy é configurado para o jeito
+            que cada equipe trabalha.
           </p>
         </div>
 
@@ -106,10 +145,10 @@ export default function Segments() {
             arrastar seis vezes; aqui os seis segmentos ficam visíveis o tempo
             todo e o conteúdo troca no lugar. */}
         <div className="mt-10 sm:hidden">
-          <div className="relative min-h-[188px]">
+          <div className="relative">
             {/* sync + posição absoluta: o card novo entra enquanto o antigo sai,
                 sem o intervalo vazio que o mode="wait" abre entre os dois */}
-            <AnimatePresence mode="sync" initial={false}>
+            <AnimatePresence mode="wait" initial={false}>
               <motion.a
                 key={seg.id}
                 href="#contato"
@@ -117,7 +156,7 @@ export default function Segments() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="group absolute inset-x-0 top-0 block overflow-hidden rounded-[24px] border border-brand-orange/25 p-5"
+                className="group relative block overflow-hidden rounded-[24px] border border-brand-orange/25 p-5"
                 style={{ background: seg.bg, backgroundSize: "cover" }}
               >
                 <CardSegmento seg={seg} compacto />
@@ -125,7 +164,7 @@ export default function Segments() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-5 overflow-hidden px-0.5 py-2">
             <SegmentStrip active={ativo} onSelect={escolher} />
           </div>
         </div>

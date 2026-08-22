@@ -11,17 +11,17 @@ const STEPS = [
   {
     n: "01",
     title: "Cadastramos sua loja",
-    text: "A gente importa o seu cardápio, os produtos e os preços do sistema antigo. Você não digita nada.",
+    text: "Nosso time ajuda a trazer cardápio, produtos e preços para você não começar do zero.",
   },
   {
     n: "02",
     title: "Treinamos sua equipe",
-    text: "Uma conversa com quem vai mexer no sistema todo dia: o caixa, a cozinha e quem atende no salão.",
+    text: "Caixa, cozinha e atendimento aprendem apenas o que usam na rotina.",
   },
   {
     n: "03",
     title: "Você vende no mesmo dia",
-    text: "Caixa, cardápio e delivery funcionando. Na primeira semana a gente fica por perto para resolver o que aparecer.",
+    text: "Depois da configuração, acompanhamos os primeiros dias de uso e ajustamos o que for necessário.",
   },
 ];
 
@@ -30,7 +30,7 @@ const CONTACT_EMAIL = "contato@zurve.io";
 
 export function HowItWorks() {
   return (
-    <section id="sobre" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+    <section id="sobre" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
       <div className="relative mx-auto max-w-[1120px] px-6">
         <div className="mx-auto max-w-[680px] text-center">
@@ -40,9 +40,8 @@ export function HowItWorks() {
             <span className="text-brand-orange">até 48 horas</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-brand-cream/55">
-            Trocar de sistema dá medo de parar a loja, a gente sabe. Por isso a
-            migração é feita pelo nosso time e você continua vendendo enquanto
-            ela acontece.
+            A troca é planejada com o seu time para não atrapalhar a rotina da
+            loja. A gente configura, orienta a equipe e acompanha o início.
           </p>
         </div>
 
@@ -83,12 +82,16 @@ export function HowItWorks() {
 
 const FAQ = [
   {
+    q: "O FoodFy serve para qualquer tipo de restaurante?",
+    a: "Serve para restaurante, lanchonete, pizzaria, hamburgueria, cafeteria e bar. A configuração acompanha a rotina de cada negócio: balcão, salão ou delivery.",
+  },
+  {
     q: "Preciso trocar meu equipamento?",
     a: "Não precisa. O FoodFy abre no navegador, em qualquer computador, tablet ou celular. Impressora térmica e leitor de código de barras que você já tem continuam sendo usados.",
   },
   {
     q: "Funciona se a internet cair?",
-    a: "O caixa continua vendendo normal e a nota entra em contingência. Quando a conexão volta, o sistema transmite o que ficou parado.",
+    a: "O sistema conta com contingência para os documentos fiscais. Quando a conexão volta, o envio pendente é retomado.",
   },
   {
     q: "Consigo integrar com o iFood?",
@@ -100,11 +103,11 @@ const FAQ = [
   },
   {
     q: "Tenho mais de uma loja. Dá para gerenciar junto?",
-    a: "Dá. No plano Multi-loja você vê cada unidade separada e também o total somado. Cardápio e preço podem ser diferentes em cada uma.",
+    a: "Dá. O plano Multi-loja atende até 3 unidades, com visão separada e consolidada. Para redes maiores, montamos uma proposta de implantação.",
   },
   {
-    q: "Existe fidelidade ou multa para cancelar?",
-    a: "Não tem nem uma coisa nem outra. Você cancela quando quiser e leva os seus dados junto.",
+    q: "Como funcionam os períodos de pagamento?",
+    a: "Você pode contratar mensal, trimestral ou anual. Antes de fechar, mostramos o valor, o período de cobrança e as condições de cancelamento.",
   },
 ];
 
@@ -112,7 +115,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
       <div className="pointer-events-none absolute right-[-180px] top-[-120px] h-[480px] w-[480px] rounded-full bg-brand-orange/[0.06] blur-[80px]" />
       <div className="mx-auto max-w-[860px] px-6">
         <div className="text-center">
@@ -176,7 +179,7 @@ export function Faq() {
 
 export function Cta() {
   return (
-    <section id="contato" className="relative overflow-hidden bg-[#15100D] py-24 lg:py-32">
+    <section id="contato" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.13] blur-[90px]" />
 
       <div className="relative mx-auto max-w-[980px] px-6">
@@ -186,8 +189,9 @@ export function Cta() {
             <span className="text-gradient-brand">com o seu cardápio?</span>
           </h2>
           <p className="mx-auto mt-5 max-w-[520px] text-[16.5px] leading-relaxed text-brand-cream/60">
-            Deixa o seu WhatsApp que a gente monta uma demonstração com os seus
-            produtos e os seus preços. Depois você testa 14 dias.
+            Deixa o seu WhatsApp que a gente monta uma demonstração do sistema
+            com o seu cardápio, os seus produtos e os seus preços. Depois você
+            testa 14 dias.
           </p>
 
           <form
@@ -222,7 +226,7 @@ export function Cta() {
 
           <p className="mt-5 flex items-center justify-center gap-2 text-[13.5px] text-brand-cream/45">
             <Phone className="h-3.5 w-3.5" />
-            Respondemos em até 1 hora útil. Quem fala com você é gente.
+            A conversa é direto com o nosso time, pelo WhatsApp.
           </p>
           <a href={`mailto:${CONTACT_EMAIL}`} className="-my-1 inline-block py-2 mt-3 inline-block text-[13px] text-brand-cream/40 transition-colors hover:text-brand-orange">
             Prefere e-mail? {CONTACT_EMAIL}
@@ -277,8 +281,9 @@ export function Footer() {
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo />
             <p className="mt-5 max-w-[300px] text-[14.5px] leading-relaxed text-brand-cream/50">
-              Sistema de gestão para quem trabalha com comida. Do pedido no
-              cardápio até a nota fiscal, sem trocar de programa.
+              Sistema para restaurante, lanchonete, pizzaria, cafeteria, bar e
+              hamburgueria. Do pedido no cardápio digital até a nota fiscal,
+              sem trocar de programa.
             </p>
             <div className="mt-5 flex flex-col items-start gap-2 text-[13.5px] text-brand-cream/50">
               <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="-my-1 inline-block py-2 transition-colors hover:text-brand-orange">

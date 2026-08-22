@@ -143,20 +143,19 @@ export default function Hero() {
           }}
         >
           <h1 className="text-[34px] font-bold leading-[1.12] tracking-tight text-brand-cream sm:text-[42px] xl:text-[clamp(30px,2.8vw,48px)]">
-            Sistema de gestão para restaurantes
+            Seu restaurante inteiro
             <br className="hidden xl:block" />{" "}
-            <span className="text-gradient-brand">que conecta toda a operação.</span>
+            <span className="text-gradient-brand">trabalhando no mesmo sistema.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-[430px] text-[16px] leading-relaxed text-brand-cream/65 xl:mx-0 xl:text-[clamp(14px,1.05vw,17px)]">
-            Centralize PDV, cardápio digital, mesas e comandas, delivery,
-            estoque, financeiro e emissão de notas fiscais. Menos sistemas
-            separados, menos erros e mais controle para vender.
+            O pedido entra uma vez e segue para a cozinha, o caixa, o estoque e
+            o financeiro. Você acompanha tudo sem trocar de programa.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 xl:justify-start">
-            <a href="#solucoes" className="btn-primary">
-              Conheça o FoodFy
+            <a href="#recursos" className="btn-primary">
+              Veja como funciona
               <ArrowRight className="h-[18px] w-[18px]" />
             </a>
           </div>
@@ -327,7 +326,7 @@ export default function Hero() {
 
       {/* scroll cue */}
       <a
-        href="#solucoes"
+        href="#recursos"
         className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[12.5px] text-brand-cream/45 transition-colors hover:text-brand-cream/80 xl:flex"
       >
         Role para explorar

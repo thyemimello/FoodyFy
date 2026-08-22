@@ -3,7 +3,7 @@ import { LogIn, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 const NAV = [
-  { label: "Soluções", href: "#solucoes" },
+  { label: "Como funciona", href: "#recursos" },
   { label: "Recursos", href: "#recursos" },
   { label: "Preços", href: "#precos" },
   { label: "Clientes", href: "#clientes" },

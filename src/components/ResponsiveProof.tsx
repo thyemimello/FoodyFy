@@ -82,7 +82,7 @@ export default function ResponsiveProof() {
     <section
       id="cardapio-autonomo"
       aria-label="Autonomia total para gerenciar o cardápio digital"
-      className="relative w-full overflow-hidden bg-[#15100D] py-24 lg:py-32"
+      className="relative w-full overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32"
     >
       <Palco />
 
@@ -100,7 +100,7 @@ export default function ResponsiveProof() {
               strokeWidth={2}
             />
             <span className="text-[12px] font-bold uppercase tracking-[.12em] text-brand-orange">
-              Autonomia total no cardápio
+              Cardápio digital
             </span>
           </motion.span>
 
@@ -111,11 +111,9 @@ export default function ResponsiveProof() {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="mt-7 text-[36px] font-bold leading-[1.06] tracking-[-.035em] text-brand-cream sm:text-[44px] xl:text-[50px]"
           >
-            Seu cardápio.
+            Mudou o preço ou acabou um item?
             <br />
-            Suas regras.
-            <br />
-            <span className="text-brand-orange">Sem depender de ninguém.</span>
+            <span className="text-brand-orange">Atualize sem abrir chamado.</span>
           </motion.h2>
 
           <motion.p
@@ -125,9 +123,8 @@ export default function ResponsiveProof() {
             transition={{ duration: 0.7, delay: 0.14 }}
             className="mt-6 max-w-[500px] text-[15px] leading-[1.7] text-brand-cream/60"
           >
-            Você mesmo cria e gerencia o cardápio digital dentro do FoodFy.
-            Atualize produtos, preços e promoções na hora, com liberdade para
-            acompanhar o ritmo da sua operação.
+            Produtos, preços, fotos, adicionais e promoções são alterados dentro
+            do FoodFy. A mudança aparece no link e no QR Code do cliente.
           </motion.p>
 
           <div className="mt-9 grid max-w-[620px] gap-3 sm:grid-cols-2">

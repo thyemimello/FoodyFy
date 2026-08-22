@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Modules from "./components/Modules";
 import ResponsiveProof from "./components/ResponsiveProof";
 import Showcase from "./components/Showcase";
+import { Fiscal, NotasFiscais, Pagamentos, Salao } from "./components/Operacao";
 import Segments from "./components/Segments";
 import Pricing from "./components/Pricing";
 import { Cta, Faq, Footer, HowItWorks } from "./components/Closing";
@@ -17,9 +17,16 @@ export default function App() {
       <Header onLogin={() => setLogin(true)} />
       <main>
         <Hero />
-        <Modules />
-        <ResponsiveProof />
+        {/* Fluxo comercial: como o dia funciona, quem atende, o que o cliente
+            vê, como você recebe, como você declara, para quem serve. Operação,
+            depois dinheiro, depois obrigação legal, depois prova de encaixe.
+            "Soluções" saiu daqui: virou redundante com a jornada do pedido. */}
         <Showcase />
+        <Salao />
+        <ResponsiveProof />
+        <Pagamentos />
+        <NotasFiscais />
+        <Fiscal />
         <Segments />
         <HowItWorks />
         <Pricing />

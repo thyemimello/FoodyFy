@@ -10,7 +10,7 @@ export default function SegmentStrip({
   onSelect: (i: number) => void;
 }) {
   return (
-    <div className="flex w-full items-center justify-center gap-3 sm:gap-5">
+    <div className="flex w-full items-center justify-center gap-1.5 sm:gap-5">
       {SEGMENTS.map((seg, i) => {
         const isActive = i === active;
         return (
@@ -22,9 +22,13 @@ export default function SegmentStrip({
             className="group relative shrink-0 outline-none"
           >
             <motion.span
-              className="relative block rounded-full"
+              className={`relative block rounded-full transition-[width,height] duration-300 ${
+                isActive
+                  ? "h-[62px] w-[62px] sm:h-[82px] sm:w-[82px]"
+                  : "h-[45px] w-[45px] sm:h-[58px] sm:w-[58px]"
+              }`}
               initial={false}
-              animate={{ width: isActive ? 82 : 58, height: isActive ? 82 : 58 }}
+              animate={{ scale: isActive ? 1 : 0.98 }}
               transition={{ type: "spring", stiffness: 130, damping: 18 }}
             >
               <span
@@ -59,7 +63,7 @@ export default function SegmentStrip({
                     (e.currentTarget as HTMLImageElement).style.display = "none";
                   }}
                 />
-                <span className="relative text-[26px] leading-none drop-shadow-[0_4px_12px_rgba(0,0,0,.6)]">
+                <span className="relative text-[20px] leading-none drop-shadow-[0_4px_12px_rgba(0,0,0,.6)] sm:text-[26px]">
                   {seg.emoji}
                 </span>
               </span>

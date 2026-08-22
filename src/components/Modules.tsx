@@ -72,8 +72,9 @@ export default function Modules() {
             <span className="text-gradient-brand">no mesmo lugar</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-brand-cream/60">
-            Do pedido à nota fiscal, o FoodFy conecta frente de caixa e gestão
-            para restaurantes, lanchonetes, cafeterias, pizzarias e bares.
+            Um sistema para restaurante que vai do pedido à nota fiscal, ligando
+            frente de caixa e gestão numa coisa só. Serve para restaurantes,
+            lanchonetes, cafeterias, pizzarias, hamburguerias e bares.
           </p>
         </div>
 
