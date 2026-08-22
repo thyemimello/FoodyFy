@@ -112,10 +112,9 @@ export default function Showcase() {
           ilegível. Em vez de sumir de vez, volta como textura bem apagada
           atrás da trilha — 67 KB no lugar dos 1,6 MB do PNG original. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden lg:hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_38%_at_70%_24%,rgba(255,138,0,.10),transparent_72%)]" />
+        <div className="absolute inset-0 bg-[#15100D]" />
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-[12%] h-[70%] bg-[radial-gradient(ellipse_at_68%_40%,rgba(255,138,0,.16),transparent_62%)]" />
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 items-start gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(270px,34%)_minmax(0,1fr)] lg:gap-x-4 lg:px-10">
         <aside className="relative z-10 flex flex-col max-lg:contents lg:pt-6">
           <header className="max-lg:order-1">

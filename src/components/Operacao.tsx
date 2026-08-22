@@ -182,8 +182,6 @@ export function Salao() {
         <div className="absolute right-0 top-0 hidden h-[30%] w-[62%] bg-[radial-gradient(ellipse_at_72%_28%,rgba(21,16,13,.98)_0%,rgba(21,16,13,.94)_32%,rgba(21,16,13,.55)_58%,transparent_78%)] lg:block" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#15100D] to-transparent" />
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-[58%] bg-[radial-gradient(ellipse_at_34%_46%,rgba(255,120,20,.09),transparent_68%)]" />
-
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         {/* ---------- tablet à esquerda (espelhado da referência) ---------- */}
         <div className="hidden">
@@ -293,8 +291,6 @@ export function Pagamentos() {
       id="pagamentos"
       className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32"
     >
-      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-[#8B5E3C]/[0.14] blur-[90px]" />
-
       <div className="relative mx-auto max-w-[1240px] px-6">
         <Cabecalho
           selo="Pagamentos"
@@ -382,12 +378,6 @@ const AVISOS = [
 function TelaFiscal() {
   return (
     <div className="group/tela relative mx-auto w-full max-w-[760px] xl:mx-0 xl:w-[116%] xl:max-w-none xl:origin-left">
-      {/* poça de luz quente no chão, atrás do aparelho */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-18%] bottom-[-10%] top-[2%] bg-[radial-gradient(ellipse_58%_48%_at_48%_76%,rgba(255,124,20,.42),transparent_68%)] blur-2xl transition-opacity duration-700 group-hover/tela:opacity-90"
-      />
-
       <motion.div {...ENTRADA} className="relative">
         <div className="origin-center [transform:perspective(1800px)_rotateY(-3deg)_rotateX(1deg)] transition-transform duration-700 ease-out xl:[transform:perspective(2400px)_rotateY(-7deg)_rotateX(1.5deg)] xl:group-hover/tela:[transform:perspective(2400px)_rotateY(-4deg)_rotateX(.5deg)]">
           {/* ---------- corpo ---------- */}
@@ -468,8 +458,6 @@ export function NotasFiscais() {
       className="relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 lg:min-h-[900px] lg:py-24"
     >
       {/* a luz vem do lado dos telas, como se as telas iluminassem a seção */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_48%_62%_at_67%_55%,rgba(255,120,20,.24),transparent_70%),radial-gradient(ellipse_35%_55%_at_36%_46%,rgba(120,55,20,.16),transparent_72%)]" />
-
       <div className="relative mx-auto max-w-[1500px] px-6 lg:px-10">
         <div className="grid items-center gap-14 xl:grid-cols-[minmax(500px,.82fr)_minmax(0,1.18fr)] xl:gap-5">
           {/* ---------------- coluna de texto ---------------- */}
@@ -661,8 +649,6 @@ export function Fiscal() {
       id="fiscal"
       className="relative overflow-hidden bg-[#0D0A08] py-16 sm:py-20 lg:py-28"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_52%_38%_at_50%_8%,rgba(255,120,20,.13),transparent_72%),radial-gradient(ellipse_42%_52%_at_78%_55%,rgba(139,94,60,.10),transparent_75%)]" />
-
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="mx-auto max-w-[900px] text-center">
           <motion.span {...ENTRADA} className="section-eyebrow">
