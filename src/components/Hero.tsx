@@ -123,6 +123,13 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#15100D] via-[#15100D]/55 to-transparent" />
       <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay" />
 
+      {/* luz ambiente que acompanha o segmento */}
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]"
+        animate={{ backgroundColor: seg.light, opacity: 0.1 }}
+        transition={{ duration: 1.2 }}
+      />
+
       {/* ---------- conteúdo ---------- */}
       <div className="relative z-10 mx-auto flex h-full max-w-[1680px] flex-col items-center gap-12 px-6 pb-24 pt-28 xl:grid xl:grid-cols-[minmax(300px,1fr)_auto_auto] xl:items-center xl:gap-6 xl:px-[3vw] xl:pb-16 xl:pt-20 2xl:gap-10">
         {/* ----- copy ----- */}
@@ -189,6 +196,14 @@ export default function Hero() {
               className="relative grid shrink-0 place-items-center"
               style={{ width: DISC, height: DISC }}
             >
+              {/* só profundidade atrás do disco — sem halo estourado em volta
+                  da marca, que agora tem contraste próprio */}
+              <motion.div
+                className="pointer-events-none absolute -inset-16 rounded-full blur-[80px]"
+                animate={{ backgroundColor: seg.light, opacity: 0.07 }}
+                transition={{ duration: 1.2 }}
+              />
+
               {/* anéis orbitais */}
               <svg
                 className="pointer-events-none absolute h-[500px] w-[500px] animate-spin-slow"

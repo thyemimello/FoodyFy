@@ -74,6 +74,8 @@ export default function Pricing() {
 
   return (
     <section id="precos" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
+
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="mx-auto max-w-[680px] text-center">
           <span className="section-eyebrow">Planos</span>

@@ -77,6 +77,7 @@ export function LoginModal({
   return (
     <Shell open={open} onClose={onClose}>
       <div className="relative overflow-hidden rounded-[28px] border border-brand-sand/[0.14] bg-[#15100D]/95 p-9 shadow-card backdrop-blur-2xl">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-brand-orange/25 blur-[70px]" />
 
         <div className="relative">
           <FoodfyMark className="h-11 w-11" />

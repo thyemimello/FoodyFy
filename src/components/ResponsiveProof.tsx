@@ -51,6 +51,9 @@ function Palco() {
 
   return (
     <div ref={ref} aria-hidden="true" className="absolute inset-0 overflow-hidden">
+      {/* luz do produto, derramando para o lado do texto */}
+      <div className="absolute inset-y-0 -left-1/4 right-0 bg-[radial-gradient(ellipse_at_62%_50%,rgba(255,120,20,.22),transparent_68%)]" />
+
       {/* escuro por trás do vídeo, para ele não clarear o fundo da seção */}
       <div className="absolute inset-0 bg-[#15100D] lg:bg-transparent" />
 

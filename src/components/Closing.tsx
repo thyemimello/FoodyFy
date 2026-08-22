@@ -31,6 +31,7 @@ const CONTACT_EMAIL = "contato@zurve.io";
 export function HowItWorks() {
   return (
     <section id="sobre" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.08] blur-[90px]" />
       <div className="relative mx-auto max-w-[1120px] px-6">
         <div className="mx-auto max-w-[680px] text-center">
           <span className="section-eyebrow">Implantação</span>
@@ -115,6 +116,7 @@ export function Faq() {
 
   return (
     <section className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
+      <div className="pointer-events-none absolute right-[-180px] top-[-120px] h-[480px] w-[480px] rounded-full bg-brand-orange/[0.06] blur-[80px]" />
       <div className="mx-auto max-w-[860px] px-6">
         <div className="text-center">
           <span className="section-eyebrow">Dúvidas</span>
@@ -178,8 +180,10 @@ export function Faq() {
 export function Cta() {
   return (
     <section id="contato" className="relative overflow-hidden bg-[#15100D] py-16 sm:py-20 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-orange/[0.13] blur-[90px]" />
+
       <div className="relative mx-auto max-w-[980px] px-6">
-          <div className="overflow-hidden rounded-[32px] border border-brand-sand/[0.14] bg-[#211710] px-8 py-14 text-center sm:px-14">
+          <div className="overflow-hidden rounded-[32px] border border-brand-sand/[0.14] bg-gradient-to-b from-[#8B5E3C]/[0.18] to-[#8B5E3C]/[0.06] px-8 py-14 text-center sm:px-14">
           <h2 className="mx-auto max-w-[620px] text-[34px] font-bold leading-[1.15] tracking-tight text-brand-cream sm:text-[44px]">
             Quer ver funcionando{" "}
             <span className="text-gradient-brand">com o seu cardápio?</span>
